@@ -1,0 +1,50 @@
+{
+  "source": "tracker",
+  "sent_at": "2026-11-12T09:14:00Z",
+  "events": [
+    {
+      "fingerprint": "inv-7f21c",
+      "service": "inventory",
+      "level": "error",
+      "title": "AssertionError: available stock went negative",
+      "culprit": "services/inventory/stock.py in reserve",
+      "count": 14,
+      "first_seen": "2026-11-12T07:02:11Z",
+      "last_seen": "2026-11-12T09:13:40Z",
+      "sample": {"sku": "TW-1182", "on_hand": 3, "held": 2, "requested": 3, "customer_email": "jo.marsh@example.com"}
+    },
+    {
+      "fingerprint": "shp-a903e",
+      "service": "shipping",
+      "level": "error",
+      "title": "KeyError: 'postcode'",
+      "culprit": "services/shipping/rates.py in quote",
+      "count": 6,
+      "first_seen": "2026-11-12T08:40:02Z",
+      "last_seen": "2026-11-12T09:11:15Z",
+      "sample": {"address": {"name": "Aoife Byrne", "line1": "4 Quay St", "city": "Galway", "country": "IE"}, "weight_kg": 2.4}
+    },
+    {
+      "fingerprint": "ntf-1c0d8",
+      "service": "notifications",
+      "level": "warning",
+      "title": "TimeoutError: SMTP relay smtp.mailrelay.tidewell.internal:587 timed out",
+      "culprit": "services/notifications/sender.py in send",
+      "count": 3,
+      "first_seen": "2026-11-12T09:05:44Z",
+      "last_seen": "2026-11-12T09:06:30Z",
+      "sample": {"template": "order_shipped", "to": "sam.k@example.com", "attempt": 1}
+    },
+    {
+      "fingerprint": "pay-55be2",
+      "service": "payments",
+      "level": "error",
+      "title": "RefundMismatch: refunded 1499 but expected 1500",
+      "culprit": "services/payments/refunds.py in partial_refund",
+      "count": 9,
+      "first_seen": "2026-11-11T16:20:09Z",
+      "last_seen": "2026-11-12T09:02:51Z",
+      "sample": {"order_total_pence": 2999, "percent": 50, "card_last4": "4242"}
+    }
+  ]
+}
