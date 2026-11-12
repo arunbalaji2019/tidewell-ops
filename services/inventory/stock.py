@@ -19,7 +19,7 @@ class Inventory:
 
     def reserve(self, sku, qty):
         """Called when an order is paid. Takes stock off the shelf."""
-        if qty > self.on_hand.get(sku, 0):
+        if qty > self.available(sku):
             raise OutOfStock(sku)
         self.on_hand[sku] -= qty
         assert self.available(sku) >= 0, "available stock went negative"
