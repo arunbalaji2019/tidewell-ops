@@ -8,5 +8,4 @@ def quote(address, weight_kg):
     if address.get("country", "GB") == "GB":
         zone = UK_ZONES.get(address["postcode"][:2], 1)
         return round(base + 1.50 * (zone - 1), 2)
-    zone_hint = address["postcode"][:2]  # used to be needed for EU rates
     return round(base + INTERNATIONAL[address["country"]], 2)
