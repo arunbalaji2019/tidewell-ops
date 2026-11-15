@@ -15,3 +15,12 @@ def test_reserve_more_than_on_hand():
     inv.receive("TW-1", 1)
     with pytest.raises(OutOfStock):
         inv.reserve("TW-1", 2)
+
+
+def test_reserve_more_than_available_with_holds():
+    inv = Inventory()
+    inv.receive("TW-1", 3)
+    inv.hold("TW-1", 2)
+    with pytest.raises(OutOfStock):
+        inv.reserve("TW-1", 3)
+    assert inv.available("TW-1") == 1
